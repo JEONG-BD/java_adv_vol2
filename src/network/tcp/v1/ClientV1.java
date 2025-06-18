@@ -13,6 +13,7 @@ public class ClientV1 {
     public static void main(String[] args) throws IOException {
         log("클라이언트 시작");
         Socket socket = new Socket("localhost", PORT);
+        System.out.println("socket.getInetAddress() = " + socket.getInetAddress());
         DataOutputStream output = new DataOutputStream(socket.getOutputStream());
         DataInputStream input = new DataInputStream(socket.getInputStream());
         log("소켓 연결 " + socket);
