@@ -63,8 +63,13 @@ public class SessionV6 implements Runnable{
     }
 
 
-    public void close(){
+    public synchronized void close(){
+
+        if(closed){
+            return;
+        }
         SocketCloseUtil.closeAll(socket, input, output);
+        closed = true;
         log("연결 종료 " + socket + " is Closed: "  + socket.isClosed());
     }
 }
