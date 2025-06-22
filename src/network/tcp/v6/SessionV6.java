@@ -1,5 +1,7 @@
 package network.tcp.v6;
 
+import network.tcp.SocketCloseUtil;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -29,8 +31,8 @@ public class SessionV6 implements Runnable{
     public void run() {
 
         try(socket;
-            DataInputStream input = new DataInputStream(socket.getInputStream());
-            DataOutputStream output = new DataOutputStream(socket.getOutputStream());){
+            input;
+            output;){
 
             while (true){
                 String received = input.readUTF();
@@ -53,8 +55,16 @@ public class SessionV6 implements Runnable{
 
         } catch (IOException e) {
             log(e);
+        } finally {
+            close();
         }
 
         log("연결 종료 : " + socket + " is Closed " + socket.isClosed());
+    }
+
+
+    public void close(){
+        SocketCloseUtil.closeAll(socket, input, output);
+        log("연결 종료 " + socket + " is Closed: "  + socket.isClosed());
     }
 }
