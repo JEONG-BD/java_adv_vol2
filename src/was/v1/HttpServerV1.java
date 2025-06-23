@@ -58,7 +58,7 @@ public class HttpServerV1 {
         int length = body.getBytes(UTF_8).length;
         StringBuilder sb = new StringBuilder();
         sb.append("HTTP/1.1 200 OK\r\n");
-        sb.append("Content-Type: tex1t/html\r\n");
+        sb.append("Content-Type: text/html\r\n");
         sb.append("Content-Length: ").append(length).append("\r\n");
         sb.append("\r\n");
         sb.append(body);
