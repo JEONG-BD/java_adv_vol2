@@ -42,11 +42,15 @@ public class HttpServerV1 {
             log("HTTP 요청 정보 출력");
             System.out.println(requestStr);
             log("HTTP 응답 생성");
-            Thread.sleep(3000);
+            sleep();
             responseToClient(writer);
             log("HTTP 응답 전송 완료");
 
         }
+    }
+
+    private static void sleep() throws InterruptedException {
+        Thread.sleep(3000);
     }
 
     private void responseToClient(PrintWriter writer) {
@@ -76,7 +80,4 @@ public class HttpServerV1 {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-
-    }
 }
