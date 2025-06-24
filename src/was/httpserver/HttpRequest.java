@@ -22,7 +22,7 @@ public class HttpRequest {
 
     private void parseRequestLine(BufferedReader reader) throws IOException {
         String requestLine = reader.readLine();
-        if(requestLine != null){
+        if(requestLine == null){
             throw new IOException("EOF No request line received");
         }
         String[] parts = requestLine.split(" ");
